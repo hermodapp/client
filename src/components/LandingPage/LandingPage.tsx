@@ -25,10 +25,10 @@ export default function LandingPage() {
             </p>
             <div className="flex justify-center">
               <Link to="./Services">
-                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Our Services</button>
+                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord6 rounded text-lg text-nord7">Our Services</button>
               </Link>
               <Link to="/">
-                <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Start Here</button>
+                <button className="ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
               </Link>
             </div>
           </div>
