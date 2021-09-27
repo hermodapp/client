@@ -27,8 +27,8 @@ export default function Header() {
           <NavLink to="/about">
             <a className="mr-5 text-nord3 hover:bg-nord6">About</a>
           </NavLink>
-          <NavLink to="/deliverables">
-            <a className="mr-5 text-nord3 hover:bg-nord6">Deliverables</a>
+          <NavLink to="/services">
+            <a className="mr-5 text-nord3 hover:bg-nord6">Services</a>
           </NavLink>
         </nav>
       </div>
