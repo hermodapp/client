@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link} from "react-router-dom";
 import "../../index.css"
 
 export default function LandingPage() {
@@ -24,8 +24,12 @@ export default function LandingPage() {
               notification.
             </p>
             <div className="flex justify-center">
-              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Our Services</button>
-              <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Learn More</button>
+              <Link to="./Services">
+                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Our Services</button>
+              </Link>
+              <Link to="/">
+                <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Start Here</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -74,6 +78,11 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+          <NavLink to="/About" className="mt-3 text-indigo-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </NavLink>
         </div>
       </section>
       {/* <section className="text-gray-700 body-font border-t border-gray-200">
