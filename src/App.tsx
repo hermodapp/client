@@ -7,6 +7,7 @@ import Header from "./components/Navigations/Header";
 import Footer from "./components/Navigations/Footer";
 import "./App.css";
 import "./index.css"
+import QrCode from "./components/QrCodeGenerator";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/services" component={Services} />
             <Route exact path="/about" component={About} /> 
+            <Route exact path="/qr_code" component={QrCode} />
           </Switch>
         </div>
       <Footer/>
