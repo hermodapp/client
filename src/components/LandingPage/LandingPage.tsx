@@ -7,7 +7,7 @@ export default function LandingPage() {
     <>
       <section className="text-gray-700 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <div className="flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Who We Are
             </h1>
             <p className="text-nord3 font-medium text-justify">
@@ -28,9 +28,6 @@ export default function LandingPage() {
               <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Learn More</button>
             </div>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600/edf2f7/a5afbd"/>
-          </div>
         </div>
       </section>
       <section className="text-gray-700 body-font border-t border-gray-200">
@@ -40,7 +37,7 @@ export default function LandingPage() {
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">We are group of seniors in Computer Science at The University of Alabama.</p>
           </div>
           <div className="flex flex-wrap -m-2">
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
+            <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                 <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80/edf2f7/a5afbd"/>
                 <div className="flex-grow">
@@ -49,7 +46,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
+            <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                 <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84/edf2f7/a5afbd"/>
                 <div className="flex-grow">
@@ -58,7 +55,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
+            <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                 <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88/edf2f7/a5afbd"/>
                 <div className="flex-grow">
@@ -67,7 +64,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
+            <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
               <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                 <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/90x90/edf2f7/a5afbd"/>
                 <div className="flex-grow">
@@ -79,7 +76,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="text-gray-700 body-font border-t border-gray-200">
+      {/* <section className="text-gray-700 body-font border-t border-gray-200">
         <div className="container px-5 py-24 mx-auto">
           <div className="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
@@ -91,7 +88,7 @@ export default function LandingPage() {
             <p className="text-gray-500">Senior Product Designer</p>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <section>
       <div className="flex flex-col min-h-screen justify-center items-center -mt-40">
         <div className="flex flex-col justify-center items-center">
