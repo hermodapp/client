@@ -7,19 +7,21 @@ import Header from "./components/Navigations/Header";
 import Footer from "./components/Navigations/Footer";
 import "./App.css";
 import "./index.css"
+import QrCode from "./components/QrCodeGenerator";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-        <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/deliverables" component={Deliverables} />
-            <Route exact path="/about" component={About} /> 
-          </Switch>
-        </div>
-      <Footer/>
+      <Header />
+      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/deliverables" component={Deliverables} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/qr_code" component={QrCode} />
+        </Switch>
+      </div>
+      <Footer />
     </div>
   );
 }
