@@ -1,25 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import logo from "./logo.svg";
+import LandingPage from "./components/LandingPage/LandingPage"
+import About from "./components/LandingPage/About"
+import Deliverables from "./components/LandingPage/Deliverables";
+import Header from "./components/Navigations/Header";
+import Footer from "./components/Navigations/Footer";
 import "./App.css";
+import "./index.css"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+        <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/deliverables" component={Deliverables} />
+            <Route exact path="/about" component={About} /> 
+          </Switch>
+        </div>
+      <Footer/>
     </div>
   );
 }
