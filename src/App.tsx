@@ -35,7 +35,7 @@ function App() {
             path="/project"
             component={() => {
               window.location.replace(
-                "https://project-website-9u2ah230n-hermod.vercel.app/"
+                "https://project-website-plum.vercel.app/"
               );
               return null;
             }}
