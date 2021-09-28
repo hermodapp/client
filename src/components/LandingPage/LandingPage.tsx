@@ -26,10 +26,10 @@ export default class LandingPage extends React.Component{
             </p>
             <div className="flex justify-center">
               <Link to="./Services">
-                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord6 rounded text-lg text-nord7">Our Services</button>
+                <button className="mt-6 inline-flex text-nord1 bg-nord7 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord7 rounded text-lg">Our Services</button>
               </Link>
               <Link to="/">
-                <button className="ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
+                <button className="mt-6 ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
               </Link>
             </div>
           </div>
