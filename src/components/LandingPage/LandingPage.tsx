@@ -1,9 +1,10 @@
-import React from "react";
+import React, {Component, useState, useRef, useEffect} from "react";
 import { NavLink, Link} from "react-router-dom";
 import "../../index.css"
 
-export default function LandingPage() {
-  return (
+export default class LandingPage extends React.Component{
+  render() {
+    return ( 
     <>
       <section className="text-gray-700 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -25,10 +26,10 @@ export default function LandingPage() {
             </p>
             <div className="flex justify-center">
               <Link to="./Services">
-                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord6 rounded text-lg text-nord7">Our Services</button>
+                <button className="mt-6 inline-flex text-nord1 bg-nord7 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord7 rounded text-lg">Our Services</button>
               </Link>
               <Link to="/">
-                <button className="ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
+                <button className="mt-6 ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
               </Link>
             </div>
           </div>
@@ -152,4 +153,5 @@ export default function LandingPage() {
     </section> */}
     </>
   );
+  }
 }

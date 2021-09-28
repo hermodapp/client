@@ -53,32 +53,44 @@ export default function QrCodeGenerator() {
         updateQrCodeList();
     });
     return (
+        <>
+        <section>
+            <div className="flex items-center justify-end">
+                <button
+                    onClick={logIn}
+                    className="mb-4 mr-4 bg-nord7 hover:bg-nord4 text-nord1 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Log Me In
+                </button>
+            </div>
+        </section>
         <section className="text-gray-600 body-font">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form className="bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
+                    <div className="flex justify-center">
+                        <input
+                            value={slug} onChange={(e) => setSlug(e.target.value)}
+                            className="shadow appearance-none border rounded w-5/6 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="slug" type="text" placeholder="Slug" />
+                        <button
+                            onClick={saveQrCode}
+                            className="ml-4 bg-nord1 hover:bg-nord4 text-nord4 hover:text-nord1 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            Save
+                        </button>
+                    </div>
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="slug">
                         slug
                     </label>
-                    <input
-                        value={slug} onChange={(e) => setSlug(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="slug" type="text" placeholder="Slug" />
-                </div>
-                <div className="flex items-center justify-between">
-                    <button
-                        onClick={saveQrCode}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Save
-                    </button>
-                    <button
-                        onClick={logIn}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Log Me In
-                    </button>
                 </div>
             </form>
-            <QRCode value={"https://hermodapp.com/load/" + slug} />
-            <h1>Your previously created QR codes:</h1>
-            {qrCodes}
+            <div className="mt-4 mb-4 flex justify-center">
+                <QRCode value={"https://hermodapp.com/load/" + slug} />
+            </div>
+            <div className="mt-4 mb-4 flex justify-center shadow-inner">
+                <h1>Your previously created QR codes:</h1>
+                <div className="mt-4 justify-center">
+                    {qrCodes}
+                </div>
+            </div>
         </section >
+    </>
     );
 }
