@@ -1,9 +1,10 @@
-import React from "react";
+import React, {Component, useState, useRef, useEffect} from "react";
 import { NavLink, Link} from "react-router-dom";
 import "../../index.css"
 
-export default function LandingPage() {
-  return (
+export default class LandingPage extends React.Component{
+  render() {
+    return ( 
     <>
       <section className="text-gray-700 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -152,4 +153,5 @@ export default function LandingPage() {
     </section> */}
     </>
   );
+  }
 }
