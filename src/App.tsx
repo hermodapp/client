@@ -31,6 +31,15 @@ function App() {
           <Route exact path="/qr_code" component={Auth(QrCode, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route
+            path="/project"
+            component={() => {
+              window.location.replace(
+                "https://project-website-9u2ah230n-hermod.vercel.app/"
+              );
+              return null;
+            }}
+          />
         </Switch>
       </div>
       <Footer />
