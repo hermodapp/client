@@ -6,30 +6,8 @@ import { registerUser } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import qs from "qs";
 
-import { Form, Input, Button } from "antd";
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+import { Form, Input, Button, Typography } from "antd";
+const { Title } = Typography;
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -73,7 +51,6 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
@@ -82,10 +59,15 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app flex flex-col justify-center items-center">
-            <h2>Sign up</h2>
+            <Title
+              className="flex justify-center items-center text-nord7"
+              level={2}
+            >
+              Sign Up
+            </Title>
             <Form
               style={{ minWidth: "375px" }}
-              {...formItemLayout}
+              size={"large"}
               onSubmit={handleSubmit}
             >
               <Form.Item required label="Username">
@@ -152,11 +134,14 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item {...tailFormItemLayout}>
+              <Form.Item>
                 <Button
-                  onClick={handleSubmit}
                   type="primary"
+                  htmlType="submit"
+                  className="bg-nord7 border-nord7 hover:bg-nord8 login-form-button "
+                  style={{ minWidth: "100%" }}
                   disabled={isSubmitting}
+                  onSubmit={handleSubmit}
                 >
                   Submit
                 </Button>

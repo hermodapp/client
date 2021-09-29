@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import React from "react";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 const base_url = "https://api.hermodapp.com/";
@@ -55,6 +55,12 @@ function Header(props: any) {
           )}
           {user.loginSucces !== 200 && (
             <div>
+              <a
+                href="https://project-website-plum.vercel.app/"
+                className="mr-5 text-nord3 hover:bg-nord6"
+              >
+                Project Website
+              </a>
               <NavLink to="/about" className="mr-5 text-nord3 hover:bg-nord6">
                 About
               </NavLink>

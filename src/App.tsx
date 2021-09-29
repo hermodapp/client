@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/LandingPage/About";
 import Services from "./components/LandingPage/Services";
@@ -29,6 +35,15 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/submitform" component={Form} />
           <Route exact path="/success" component={Success} />
+          <Route
+            path="/project"
+            component={() => {
+              window.location.replace(
+                "https://project-website-plum.vercel.app/"
+              );
+              return null;
+            }}
+          />
         </Switch>
       </div>
       <Footer />

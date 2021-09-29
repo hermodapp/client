@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-
+import "../../index.css";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
-import Icon from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 
 const { Title } = Typography;
@@ -51,9 +51,9 @@ function LoginPage(props) {
           dispatch(loginUser(dataToSubmit))
             .then((response) => {
               if (response.payload === 200) {
-                window.localStorage.setItem("userId", response.payload.userId);
+                window.localStorage.setItem("userId", values.username);
                 if (rememberMe === true) {
-                  window.localStorage.setItem("rememberMe", values.id);
+                  window.localStorage.setItem("rememberMe", values.username);
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
@@ -77,7 +77,6 @@ function LoginPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
@@ -87,18 +86,20 @@ function LoginPage(props) {
         return (
           <div className="app flex flex-col justify-center items-center">
             <Title
-              className="flex justify-center items-center text-nord3"
+              className="flex justify-center items-center text-nord7"
               level={2}
             >
               Log In
             </Title>
-            <form onSubmit={handleSubmit} style={{ width: "350px" }}>
-              <Form.Item required>
+            <Form
+              onFinish={handleSubmit}
+              style={{ width: "350px" }}
+              size="large"
+            >
+              <Form.Item required className="mb-4">
                 <Input
                   id="username"
-                  prefix={
-                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                  }
+                  prefix={<UserOutlined />}
                   placeholder="Enter your username"
                   type="username"
                   value={values.username}
@@ -106,8 +107,8 @@ function LoginPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.username && touched.username
-                      ? "text-input error"
-                      : "text-input"
+                      ? "text-input error hover:border-nord7"
+                      : "text-input hover:border-nord7"
                   }
                 />
                 {errors.username && touched.username && (
@@ -115,12 +116,10 @@ function LoginPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required>
+              <Form.Item required className="mb-2">
                 <Input
                   id="password"
-                  prefix={
-                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                  }
+                  prefix={<LockOutlined />}
                   placeholder="Enter your password"
                   type="password"
                   value={values.password}
@@ -128,8 +127,8 @@ function LoginPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.password && touched.password
-                      ? "text-input error"
-                      : "text-input"
+                      ? "text-input error hover:border-nord7"
+                      : "text-input hover:border-nord7"
                   }
                 />
                 {errors.password && touched.password && (
@@ -153,17 +152,17 @@ function LoginPage(props) {
                 </label>
               )}
 
-              <Form.Item>
+              <Form.Item className="flex flex-row flex-grow-0 justify-start">
                 <Checkbox
-                  className="flex justify-start -ml-16"
+                  className="float-left"
                   id="rememberMe"
                   onChange={handleRememberMe}
                   checked={rememberMe}
                 >
-                  Remember me
+                  Remember Me
                 </Checkbox>
                 <a
-                  className="login-form-forgot"
+                  className=" login-form-forgot text-nord7 hover:text-nord4"
                   href="/reset_user"
                   style={{ float: "right" }}
                 >
@@ -173,7 +172,7 @@ function LoginPage(props) {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="login-form-button"
+                    className="bg-nord7 border-nord7 hover:bg-nord8 login-form-button my-2"
                     style={{ minWidth: "100%" }}
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
@@ -181,9 +180,12 @@ function LoginPage(props) {
                     Submit
                   </Button>
                 </div>
-                Or <a href="/register">Register now!</a>
+                Or{" "}
+                <a href="/register" className="text-nord7 hover:text-nord4">
+                  Register now!
+                </a>
               </Form.Item>
-            </form>
+            </Form>
           </div>
         );
       }}
