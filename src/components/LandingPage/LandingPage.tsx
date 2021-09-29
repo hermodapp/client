@@ -28,7 +28,7 @@ export default class LandingPage extends React.Component{
               <Link to="./Services">
                 <button className="mt-6 inline-flex text-nord1 bg-nord7 border-0 py-2 px-6 focus:outline-none hover:bg-nord1 hover:text-nord7 rounded text-lg">Our Services</button>
               </Link>
-              <Link to="/">
+              <Link to="/login">
                 <button className="mt-6 ml-4 inline-flex text-nord1 border-0 py-2 px-6 focus:outline-none hover:bg-nord8 rounded text-lg">Start Here</button>
               </Link>
             </div>
