@@ -1,6 +1,7 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "../../index.css";
+import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 
 export default class LandingPage extends React.Component {
   render() {
@@ -38,6 +39,9 @@ export default class LandingPage extends React.Component {
                   </button>
                 </Link>
               </div>
+            </div>
+            <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+              <HermodLogo className="object-cover object-center rounded" />
             </div>
           </div>
         </section>

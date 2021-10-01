@@ -1,8 +1,9 @@
 import "tailwindcss/tailwind.css";
 import React from "react";
-import { withRouter, NavLink, Link } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 const base_url = "https://api.hermodapp.com/";
 
 function Header(props: any) {
@@ -24,18 +25,7 @@ function Header(props: any) {
           to="/"
           className="flex title-font font-medium items-center text-nord3 mb-4 md:mb-0"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          <HermodLogo className="w-14 h-14 text-white p-0 rounded-full" />
           <span className="ml-3 text-2xl">Hermod</span>
         </NavLink>
 
