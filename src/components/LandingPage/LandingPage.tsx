@@ -1,6 +1,10 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "../../index.css";
+import Brian from "../../images/brian.jpg";
+import Lois from "../../images/LoisGriffin.png";
+import Meg from "../../images/meg.png";
+import Stewie from "../../images/stewie.png";
 
 export default class LandingPage extends React.Component {
   render() {
@@ -53,12 +57,12 @@ export default class LandingPage extends React.Component {
               </p>
             </div>
             <div className="flex flex-wrap -m-2">
-              <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
+              <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src="https://dummyimage.com/80x80/edf2f7/a5afbd"
+                    className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    src={Brian}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
@@ -68,12 +72,12 @@ export default class LandingPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
+              <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src="https://dummyimage.com/84x84/edf2f7/a5afbd"
+                    className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    src={Stewie}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
@@ -83,12 +87,12 @@ export default class LandingPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
+              <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src="https://dummyimage.com/88x88/edf2f7/a5afbd"
+                    className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    src={Lois}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
@@ -98,12 +102,12 @@ export default class LandingPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="p-2 lg:w-1/2 md:w-1/2 w-full">
+              <div className="p-2 lg:w-1/4 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src="https://dummyimage.com/90x90/edf2f7/a5afbd"
+                    className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    src={Meg}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
