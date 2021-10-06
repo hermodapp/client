@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
 import { Link } from "react-router-dom";
+import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 
 export default function Footer() {
   return (
@@ -9,24 +10,17 @@ export default function Footer() {
           <div className="container px-5 py-4 mx-auto flex items-center sm:flex-row flex-col">
             <Link to="/">
               <a className="flex title-font font-medium items-center md:justify-start justify-center text-nord3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
+                <HermodLogo className="w-14 h-14 text-white p-0 rounded-full" />
+
                 <span className="ml-3 text-2xl">Hermod</span>
               </a>
             </Link>
 
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-              <a className="ml-3 text-gray-500" href="https://github.com/hermodapp">
+              <a
+                className="ml-3 text-gray-500"
+                href="https://github.com/hermodapp"
+              >
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
