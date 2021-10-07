@@ -1,14 +1,11 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "../../index.css";
-<<<<<<< HEAD
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
-=======
 import Brian from "../../images/brian.jpg";
 import Lois from "../../images/LoisGriffin.png";
 import Meg from "../../images/meg.png";
 import Stewie from "../../images/stewie.png";
->>>>>>> 0f8edf78609621ea139c2a22e088d2411e3b591a
 
 export default class LandingPage extends React.Component {
   render() {
