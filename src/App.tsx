@@ -13,9 +13,10 @@ import Header from "./components/Navigations/Header";
 import Footer from "./components/Navigations/Footer";
 import Form from "./components/Forms/SubmitForm";
 import Success from "./components/Forms/Success";
+import Dashboard from "./components/AdminDashboard/Dashboard";
 import "./App.css";
 import "./index.css";
-import QrCode from "./components/QrCodeGenerator";
+import QrCode from "./components/AdminDashboard/QrCodeGenerator";
 
 import Auth from "./hoc/auth";
 import LoginPage from "./components/Authentication/LoginPage";
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/submitform" component={Form} />
           <Route exact path="/success" component={Success} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route
             path="/project"
             component={() => {

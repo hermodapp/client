@@ -1,17 +1,17 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "../../index.css";
+import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 import Brian from "../../images/brian.jpg";
 import Lois from "../../images/LoisGriffin.png";
 import Meg from "../../images/meg.png";
 import Stewie from "../../images/stewie.png";
-import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 
 export default class LandingPage extends React.Component {
   render() {
     return (
       <>
-        <section className="text-gray-700 body-font">
+        <section className="text-gray-700 body-font bg-nord6">
           <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
             <div className="flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
               <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
