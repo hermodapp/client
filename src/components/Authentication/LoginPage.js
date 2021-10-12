@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
+import Header from "../Navigations/Header";
 
 const { Title } = Typography;
 
@@ -84,7 +85,9 @@ function LoginPage(props) {
           handleReset,
         } = props;
         return (
-          <div className="app flex flex-col justify-center items-center">
+          <>
+          <Header/>
+          <div className="app py-24 flex flex-col justify-center items-center">
             <Title
               className="flex justify-center items-center text-nord7"
               level={2}
@@ -187,6 +190,7 @@ function LoginPage(props) {
               </Form.Item>
             </Form>
           </div>
+          </>
         );
       }}
     </Formik>

@@ -1,15 +1,19 @@
 import {useState, useCallback} from 'react';
-import { NavLink} from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 import {AiOutlineHome, AiOutlineQrcode, AiOutlineSetting, AiOutlineLogout, AiOutlineMenu, AiOutlineUser} from 'react-icons/ai'
 import {HiOutlineChartSquareBar} from 'react-icons/hi'
 
 export default function Dashboard() {
-    const [toggled, setToggle] = useState(false);
+    const [toggled, setToggle] = useState(true);
 
-    const handleClick = useCallback(() => {
-        setToggle(t => !t);
+    const handleEnter = useCallback(() => {
+        setToggle(false);
+    }, []);
+
+    const handleLeave = useCallback(() => {
+        setToggle(true);
     }, []);
     
     return(
@@ -18,11 +22,11 @@ export default function Dashboard() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <title>Dashboard</title>
         </head>
-        <body className="min-h-screen overflow-x-hidden">
-            <div className="relative w-full">
+        <body className="h-48 overflow-x-hidden">
+            <div className="relative w-full" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                 {toggled === false &&
                     <>
-                        <div className="fixed w-72 h-full bg-nord9 border-l-4 border-nord4 transition duration-500 ease-in-out overflow-hidden">
+                        <div className="fixed w-72 h-full bg-nord9 border-l-2 border-nord4 duration-500 transition ease-in-out overflow-hidden">
                             <ul className="absolute w-full top-0 left-0">
                                 <li className="relative w-full list-none mb-10 pointer-events-none">
                                     <NavLink to="#" className="flex title-font font-medium items-center text-nord3 mb-4 md:mb-0">
@@ -33,7 +37,7 @@ export default function Dashboard() {
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
                                     <NavLink to="#">
                                         <AiOutlineHome className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-center h-8 leading-10">Dashboard</span>
+                                        <span className="text-nord5 text-base text-center h-8 leading-10">Home</span>
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
@@ -62,21 +66,11 @@ export default function Dashboard() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="absolute md:w-2/3 lg:w-10/12 ml-72 min-h-full transition duration-500 ease-in-out">
-                            <div className="flex w-full h-10 justify-between justify-items-center ml-2">
-                                <div className="relative top-0 w-72 h-72 flex jusitfy-center justify-items-center">
-                                    <AiOutlineMenu className="relative block h-10 w-10 leading-11 hover:bg-nord5 cursor-pointer" onClick={handleClick}/>
-                                </div>
-                                <div className="relative overflow-hidden cursor-pointer">
-                                    <AiOutlineUser className="w-10 h-10 rounded-full bg-nord4 object-cover"/>
-                                </div>
-                            </div>
-                        </div>
                     </>
                 }
                 {toggled === true &&
                     <>
-                        <div className="fixed w-12 h-full bg-nord9 border-l-4 border-nord4 transition duration-500 ease-in-out overflow-hidden rounded-r-lg">
+                        <div className="fixed w-12 h-full bg-nord9 border-l-2 border-nord4 transition duration-500 ease-in-out overflow-hidden rounded-r-lg">
                             <ul className="absolute w-full top-0 left-0">
                                 <li className="relative w-full list-none mb-10 pointer-events-none">
                                     <NavLink to="#" className="flex title-font font-medium items-center text-nord3 mb-4 md:mb-0">
@@ -111,18 +105,15 @@ export default function Dashboard() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="absolute w-11/12 ml-12 min-h-full transition duration-500 ease-in-out">
-                            <div className="flex w-full h-10 justify-between justify-items-center ml-2">
-                                <div className="relative top-0 w-72 h-72 flex justify-items-center">
-                                    <AiOutlineMenu className="relative block h-10 w-10 leading-11 hover:bg-nord5 cursor-pointer" onClick={handleClick}/>
-                                </div>
-                                <div className="relative overflow-hidden cursor-pointer">
-                                    <AiOutlineUser className="w-10 h-10 rounded-full bg-nord4 object-cover"/>
-                                </div>
-                            </div>
-                        </div>
                     </>
                 }
+            </div>
+            <div className="absolute w-11/12 ml-12">
+                <div className="flex w-full h-10 justify-end justify-items-center ml-2">
+                    <div className="relative overflow-hidden cursor-pointer">
+                        <AiOutlineUser className="w-10 h-10 rounded-full bg-nord4 object-cover"/>
+                    </div>
+                </div>
             </div>
         </body>
         </>

@@ -9,11 +9,10 @@ import {
 import LandingPage from "./components/LandingPage/LandingPage";
 import About from "./components/LandingPage/About";
 import Services from "./components/LandingPage/Services";
-import Header from "./components/Navigations/Header";
 import Footer from "./components/Navigations/Footer";
 import Form from "./components/Forms/SubmitForm";
 import Success from "./components/Forms/Success";
-import Dashboard from "./components/AdminDashboard/Dashboard";
+import Home from "./components/AdminDashboard/Home";
 import "./App.css";
 import "./index.css";
 import QrCode from "./components/AdminDashboard/QrCodeGenerator";
@@ -25,8 +24,7 @@ import RegisterPage from "./components/Authentication/RegisterPage";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
+      <div style={{minHeight: "calc(100vh - 80px)" }}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/services" component={Services} />
@@ -36,7 +34,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/submitform" component={Form} />
           <Route exact path="/success" component={Success} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/home" component={Home} />
           <Route
             path="/project"
             component={() => {

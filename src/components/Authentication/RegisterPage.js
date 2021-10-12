@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { registerUser } from "../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import qs from "qs";
+import Header from "../Navigations/Header";
 
 import { Form, Input, Button, Typography } from "antd";
 const { Title } = Typography;
@@ -58,7 +59,9 @@ function RegisterPage(props) {
           handleReset,
         } = props;
         return (
-          <div className="app flex flex-col justify-center items-center">
+          <>
+          <Header/>
+          <div className="app py-24 flex flex-col justify-center items-center">
             <Title
               className="flex justify-center items-center text-nord7"
               level={2}
@@ -148,6 +151,7 @@ function RegisterPage(props) {
               </Form.Item>
             </Form>
           </div>
+          </>
         );
       }}
     </Formik>
