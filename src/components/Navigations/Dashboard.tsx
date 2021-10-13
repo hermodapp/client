@@ -22,48 +22,48 @@ export default function Dashboard() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <title>Dashboard</title>
         </head>
-        <body className="h-48 overflow-x-hidden">
+        <body className="h-24 overflow-x-hidden">
             <div className="relative w-full" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                 {toggled === false &&
                     <>
                         <div className="fixed w-72 h-full bg-nord9 border-l-2 border-nord4 duration-500 transition ease-in-out overflow-hidden">
                             <ul className="absolute w-full top-0 left-0">
                                 <li className="relative w-full list-none mb-10 pointer-events-none">
-                                    <NavLink to="#" className="flex title-font font-medium items-center text-nord3 mb-4 md:mb-0">
+                                    <div className="flex title-font font-medium items-center text-nord3 mb-4 md:mb-0">
                                         <HermodLogo className="w-10 h-10 text-white p-0 rounded-full" />
                                         <span className="ml-3 text-2xl">Hermod</span>
-                                        </NavLink>
+                                    </div>
                                 </li>
+                                <NavLink to="/home">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <NavLink to="#">
-                                        <AiOutlineHome className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-center h-8 leading-10">Home</span>
-                                        </NavLink>
+                                    <AiOutlineHome className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Home</span>
                                 </li>
+                                </NavLink>
+                                <NavLink to="/manageform">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <NavLink to="#">
-                                        <HiOutlineChartSquareBar className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-center h-8 leading-10">Forms</span>
-                                        </NavLink>
+                                    <HiOutlineChartSquareBar className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Manage Forms</span>
                                 </li>
+                                </NavLink>
+                                <NavLink to="/qr_code">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <NavLink to="#">
-                                        <AiOutlineQrcode className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-center h-8 leading-10">Generate QR</span>
-                                        </NavLink>
+                                    <AiOutlineQrcode className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Generate QR</span>
                                 </li>
+                                </NavLink>
+                                <NavLink to="/settings">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <NavLink to="#">
-                                        <AiOutlineSetting className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-center h-8 leading-10">Setting</span>
-                                        </NavLink>
+                                    <AiOutlineSetting className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Setting</span>
                                 </li>
+                                </NavLink>
+                                <NavLink to="#">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <NavLink to="#">
-                                        <AiOutlineLogout className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                        <span className="text-nord5 text-base text-ceneter h-8 leading-10">Sign Out</span>
-                                        </NavLink>
+                                    <AiOutlineLogout className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-ceneter h-8 leading-10">Sign Out</span>
                                 </li>
+                                </NavLink>
                             </ul>
                         </div>
                     </>

@@ -16,7 +16,8 @@ import Home from "./components/AdminDashboard/Home";
 import "./App.css";
 import "./index.css";
 import QrCode from "./components/AdminDashboard/QrCodeGenerator";
-
+import ManageForm from "./components/AdminDashboard/ManageForm"
+import Setting from "./components/AdminDashboard/Setting"
 import Auth from "./hoc/auth";
 import LoginPage from "./components/Authentication/LoginPage";
 import RegisterPage from "./components/Authentication/RegisterPage";
@@ -34,7 +35,9 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/submitform" component={Form} />
           <Route exact path="/success" component={Success} />
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/home" component={Auth(Home, false)} />
+          <Route exact path="/manageform" component={Auth(ManageForm, false)}/>
+          <Route exact path="/settings" component={Auth(Setting, false)} />
           <Route
             path="/project"
             component={() => {
