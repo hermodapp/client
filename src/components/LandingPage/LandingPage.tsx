@@ -4,9 +4,9 @@ import "../../index.css";
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 import russ from "../../images/russ.png";
 import Lois from "../../images/LoisGriffin.png";
-import Meg from "../../images/meg.png";
 import Stewie from "../../images/stewie.png";
 import Header from "../Navigations/Header";
+import Simon from "../../images/simon1.png";
 
 export default class LandingPage extends React.Component {
   render() {
@@ -113,7 +113,7 @@ export default class LandingPage extends React.Component {
                   <img
                     alt="team"
                     className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src={Meg}
+                    src={Simon}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
