@@ -56,6 +56,7 @@ export default function QrCodeGenerator() {
     return (
         <>
         <Dashboard/>
+        <body className="pt-4">
         <div className="container pl-72">
             <section>
                 <div className="relative flex items-center justify-end">
@@ -95,6 +96,7 @@ export default function QrCodeGenerator() {
                 </div>
             </section >
         </div>
+        </body>
     </>
     );
 }
