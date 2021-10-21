@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "../../index.css";
 import { withRouter } from "react-router-dom";
-import { loginUser } from "../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import AuthService from "../services/authService";
 
 const { Title } = Typography;
 
-function LoginPage(props) {
-  const dispatch = useDispatch();
+function Login(props) {
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState("");
@@ -40,34 +38,18 @@ function LoginPage(props) {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          let dataToSubmit = {
-            withCredentials: true,
-            auth: {
-              username: values.username,
-              password: values.password,
+          AuthService.login(values.username, values.password).then(
+            () => {
+              props.history.push("/");
+              window.location.reload();
             },
-          };
-
-          dispatch(loginUser(dataToSubmit))
-            .then((response) => {
-              if (response.payload === 200) {
-                window.localStorage.setItem("userId", values.username);
-                if (rememberMe === true) {
-                  window.localStorage.setItem("rememberMe", values.username);
-                } else {
-                  localStorage.removeItem("rememberMe");
-                }
-                props.history.push("/");
-              } else {
-                setFormErrorMessage("Check out your Account or Password again");
-              }
-            })
-            .catch((err) => {
+            (error) => {
               setFormErrorMessage("Check out your Account or Password again");
               setTimeout(() => {
                 setFormErrorMessage("");
               }, 3000);
-            });
+            }
+          );
           setSubmitting(false);
         }, 500);
       }}
@@ -193,4 +175,4 @@ function LoginPage(props) {
   );
 }
 
-export default withRouter(LoginPage);
+export default withRouter(Login);

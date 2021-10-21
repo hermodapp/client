@@ -1,21 +1,26 @@
 import "tailwindcss/tailwind.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
-const base_url = "https://api.hermodapp.com/";
+import AuthService from "../services/authService";
+import authHeader from "../services/authHeader";
+const API_URL = "https://api.hermodapp.com/";
 
 function Header(props: any) {
-  const user = useSelector((state: any) => state.user);
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
   const logoutHandler = () => {
-    axios.get(base_url + "logout").then((response) => {
-      if (response.status === 200) {
-        props.history.push("/login");
-      } else {
-        alert("Log Out Failed");
-      }
-    });
+    AuthService.logout();
+    props.history.push("/login");
+    window.location.reload();
   };
 
   return (
@@ -30,8 +35,14 @@ function Header(props: any) {
         </NavLink>
 
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          {user.loginSucces === 200 && (
+          {currentUser && (
             <div>
+              <NavLink
+                to="/dashboard"
+                className="mr-5 text-nord3 hover:bg-nord6"
+              >
+                Dashboard
+              </NavLink>
               <NavLink to="/qr_code" className="mr-5 text-nord3 hover:bg-nord6">
                 Generate QR Code
               </NavLink>
@@ -43,7 +54,7 @@ function Header(props: any) {
               </a>
             </div>
           )}
-          {user.loginSucces !== 200 && (
+          {!currentUser && (
             <div>
               <a
                 href="https://project-website-plum.vercel.app/"

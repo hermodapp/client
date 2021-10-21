@@ -2,15 +2,12 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { registerUser } from "../../_actions/user_actions";
-import { useDispatch } from "react-redux";
-import qs from "qs";
+import AuthService from "../services/authService";
 
 import { Form, Input, Button, Typography } from "antd";
 const { Title } = Typography;
 
-function RegisterPage(props) {
-  const dispatch = useDispatch();
+function Register(props) {
   return (
     <Formik
       initialValues={{
@@ -29,19 +26,15 @@ function RegisterPage(props) {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          let dataToSubmit = qs.stringify({
-            username: values.username,
-            password: values.password,
-          });
-
-          dispatch(registerUser(dataToSubmit)).then((response) => {
-            if (response.payload === 200) {
-              props.history.push("/login");
-            } else {
+          AuthService.register(values.username, values.password).then(
+            () => {
+              props.history.push("/");
+              window.location.reload();
+            },
+            (error) => {
               alert("Register Failed");
             }
-          });
-
+          );
           setSubmitting(false);
         }, 500);
       }}
@@ -154,4 +147,4 @@ function RegisterPage(props) {
   );
 }
 
-export default RegisterPage;
+export default Register;
