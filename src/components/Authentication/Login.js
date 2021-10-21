@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import AuthService from "../services/authService";
+import Header from "../Navigations/Header";
 
 const { Title } = Typography;
 
@@ -66,109 +67,112 @@ function Login(props) {
           handleReset,
         } = props;
         return (
-          <div className="app flex flex-col justify-center items-center">
-            <Title
-              className="flex justify-center items-center text-nord7"
-              level={2}
-            >
-              Log In
-            </Title>
-            <Form
-              onFinish={handleSubmit}
-              style={{ width: "350px" }}
-              size="large"
-            >
-              <Form.Item required className="mb-4">
-                <Input
-                  id="username"
-                  prefix={<UserOutlined />}
-                  placeholder="Enter your username"
-                  type="username"
-                  value={values.username}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.username && touched.username
-                      ? "text-input error hover:border-nord7"
-                      : "text-input hover:border-nord7"
-                  }
-                />
-                {errors.username && touched.username && (
-                  <div className="input-feedback">{errors.username}</div>
+          <>
+            <Header />
+            <div className="app py-24 flex flex-col justify-center items-center">
+              <Title
+                className="flex justify-center items-center text-nord7"
+                level={2}
+              >
+                Log In
+              </Title>
+              <Form
+                onFinish={handleSubmit}
+                style={{ width: "350px" }}
+                size="large"
+              >
+                <Form.Item required className="mb-4">
+                  <Input
+                    id="username"
+                    prefix={<UserOutlined />}
+                    placeholder="Enter your username"
+                    type="username"
+                    value={values.username}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.username && touched.username
+                        ? "text-input error hover:border-nord7"
+                        : "text-input hover:border-nord7"
+                    }
+                  />
+                  {errors.username && touched.username && (
+                    <div className="input-feedback">{errors.username}</div>
+                  )}
+                </Form.Item>
+
+                <Form.Item required className="mb-2">
+                  <Input
+                    id="password"
+                    prefix={<LockOutlined />}
+                    placeholder="Enter your password"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.password && touched.password
+                        ? "text-input error hover:border-nord7"
+                        : "text-input hover:border-nord7"
+                    }
+                  />
+                  {errors.password && touched.password && (
+                    <div className="input-feedback">{errors.password}</div>
+                  )}
+                </Form.Item>
+
+                {formErrorMessage && (
+                  <label>
+                    <p
+                      style={{
+                        color: "#ff0000bf",
+                        fontSize: "0.7rem",
+                        border: "1px solid",
+                        padding: "1rem",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      {formErrorMessage}
+                    </p>
+                  </label>
                 )}
-              </Form.Item>
 
-              <Form.Item required className="mb-2">
-                <Input
-                  id="password"
-                  prefix={<LockOutlined />}
-                  placeholder="Enter your password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.password && touched.password
-                      ? "text-input error hover:border-nord7"
-                      : "text-input hover:border-nord7"
-                  }
-                />
-                {errors.password && touched.password && (
-                  <div className="input-feedback">{errors.password}</div>
-                )}
-              </Form.Item>
-
-              {formErrorMessage && (
-                <label>
-                  <p
-                    style={{
-                      color: "#ff0000bf",
-                      fontSize: "0.7rem",
-                      border: "1px solid",
-                      padding: "1rem",
-                      borderRadius: "10px",
-                    }}
+                <Form.Item className="flex flex-row flex-grow-0 justify-start">
+                  <Checkbox
+                    className="float-left"
+                    id="rememberMe"
+                    onChange={handleRememberMe}
+                    checked={rememberMe}
                   >
-                    {formErrorMessage}
-                  </p>
-                </label>
-              )}
-
-              <Form.Item className="flex flex-row flex-grow-0 justify-start">
-                <Checkbox
-                  className="float-left"
-                  id="rememberMe"
-                  onChange={handleRememberMe}
-                  checked={rememberMe}
-                >
-                  Remember Me
-                </Checkbox>
-                <a
-                  className=" login-form-forgot text-nord7 hover:text-nord4"
-                  href="/reset_user"
-                  style={{ float: "right" }}
-                >
-                  Forgot Password
-                </a>
-                <div>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="bg-nord7 border-nord7 hover:bg-nord8 login-form-button my-2"
-                    style={{ minWidth: "100%" }}
-                    disabled={isSubmitting}
-                    onSubmit={handleSubmit}
+                    Remember Me
+                  </Checkbox>
+                  <a
+                    className=" login-form-forgot text-nord7 hover:text-nord4"
+                    href="/reset_user"
+                    style={{ float: "right" }}
                   >
-                    Submit
-                  </Button>
-                </div>
-                Or{" "}
-                <a href="/register" className="text-nord7 hover:text-nord4">
-                  Register now!
-                </a>
-              </Form.Item>
-            </Form>
-          </div>
+                    Forgot Password
+                  </a>
+                  <div>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      className="bg-nord7 border-nord7 hover:bg-nord8 login-form-button my-2"
+                      style={{ minWidth: "100%" }}
+                      disabled={isSubmitting}
+                      onSubmit={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                  Or{" "}
+                  <a href="/register" className="text-nord7 hover:text-nord4">
+                    Register now!
+                  </a>
+                </Form.Item>
+              </Form>
+            </div>
+          </>
         );
       }}
     </Formik>

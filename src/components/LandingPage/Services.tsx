@@ -1,7 +1,10 @@
 import "tailwindcss/tailwind.css";
+import Header from "../Navigations/Header";
 
 export default function Services() {
   return (
+    <>
+    <Header/>
     <div className="flex flex-col min-h-screen">
         <title>Services</title>
         <a rel="icon" href="/favicon.ico" />
@@ -207,5 +210,6 @@ export default function Services() {
         </div>
       </section>
     </div>
+    </>
   );
 }

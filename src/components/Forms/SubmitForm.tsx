@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { NavLink, Link} from "react-router-dom";
 import "tailwindcss/tailwind.css";
+import Header from "../Navigations/Header";
 
 export default function SubmitForm() {
     const [value, setValue] = useState("");
@@ -10,6 +11,7 @@ export default function SubmitForm() {
     }
       return (
           <>
+          <Header/>
             <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-col text-center w-full mb-12">

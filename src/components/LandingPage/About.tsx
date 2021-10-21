@@ -1,9 +1,12 @@
 import "tailwindcss/tailwind.css";
+import Header from "../Navigations/Header";
 
 export default function About() {
   return (
+    <>
+    <Header/>
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto flex flex-col">
+      <div className="container px-5 py-2 mx-auto flex flex-col">
         <div className="lg:w-4/6 mx-auto">
           <div className="rounded-lg h-32 overflow-hidden flex justify-center items-center">
             <h1 className="flex m-0 text-center leading-5 text-6xl text-nord7">
@@ -157,5 +160,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }
