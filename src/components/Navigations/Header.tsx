@@ -57,7 +57,7 @@ function Header(props: any) {
           {!currentUser && (
             <div>
               <a
-                href="https://project-website-plum.vercel.app/"
+                href="https://project-website-ten.vercel.app/"
                 className="mr-5 text-nord3 hover:bg-nord6"
               >
                 Project Website
