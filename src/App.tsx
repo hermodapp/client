@@ -17,6 +17,7 @@ import "./App.css";
 import "./index.css";
 import QrCode from "./components/AdminDashboard/QrCodeGenerator";
 import ManageForm from "./components/AdminDashboard/ManageForm";
+import ManageQR from "./components/AdminDashboard/ManageQR";
 import Setting from "./components/AdminDashboard/Setting";
 import Auth from "./hoc/auth";
 import Login from "./components/Authentication/Login";
@@ -39,12 +40,12 @@ function App() {
           <Route exact path="/qr_code" component={Auth(QrCode, true)} />
           <Route exact path="/register" component={Auth(Register, false)} />
           <Route exact path="/login" component={Auth(Login, false)} />
-          <Route exact path="/submitform" component={Auth(Form, true)} />
+          <Route exact path="/submitform" component={Auth(Form, false)} />
           <Route exact path="/success" component={Success} />
-          <Route exact path="/dashboard" component={Auth(Home, true)} />
-          <Route exact path="/home" component={Auth(Home, false)} />
-          <Route exact path="/manageform" component={Auth(ManageForm, false)} />
-          <Route exact path="/settings" component={Auth(Setting, false)} />
+          <Route exact path="/home" component={Auth(Home, true)} />
+          <Route exact path="/manageform" component={Auth(ManageForm, true)} />
+          <Route exact path="/manageqr" component={Auth(ManageQR, true)} />
+          <Route exact path="/settings" component={Auth(Setting, true)} />
           <Route
             path="/project"
             component={() => {

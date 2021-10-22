@@ -5,12 +5,14 @@ export default function Setting() {
     return(
         <>
         <Dashboard/>
+        <section className="border rounded-2xl mx-24">
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <title>Setting</title>
             </head>
-            <body className="h-screen pl-12 overflow-x-hidden">
-                <h1 className="lg:text-2xl md:text-2xl sm:text-base pb-5 text-nord2">Settings</h1>
+            <h1 className="lg:text-2xl md:text-2xl sm:text-base pb-5 text-nord2 mt-4">Settings</h1>
+            <body className="h-full overflow-x-hidden justify-center flex mb-20">
+                <section className="justify-between">
                 <div className="mb-4 flex border mx-4 shadow-md hover:shadow-lg rounded-2xl bg-gradient-to-r from-nord8 via-nord9 to-nord10">
                     <div className="w-full overflow-x-hidden">
                         <div className="flex pb-4 pt-3 pl-4">
@@ -43,6 +45,8 @@ export default function Setting() {
                             <button className="border bg-nord6 rounded px-2 hover:shadow-lg hover:bg-nord9">edit</button>                        </div>
                     </div>
                 </div>
+                </section>
+                <section className="flex justify-center">
                 <div className="mb-4 flex border rounded-2xl mx-4 shadow-md hover:shadow-lg bg-gradient-to-r from-nord8 via-nord9 to-nord10">
                     <div className="w-full overflow-hidden">
                         <div className="flex pb-4 pt-3 pl-4">
@@ -62,7 +66,9 @@ export default function Setting() {
                             <button className="border bg-nord6 rounded px-2 hover:shadow-lg hover:bg-nord9">edit</button>                        </div>
                     </div>
                 </div>
+                </section>
             </body>
+            </section>
         </>
     )
 }

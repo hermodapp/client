@@ -38,7 +38,7 @@ function Header(props: any) {
           {currentUser && (
             <div>
               <NavLink
-                to="/dashboard"
+                to="/home"
                 className="mr-5 text-nord3 hover:bg-nord6"
               >
                 Dashboard
