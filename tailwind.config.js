@@ -20,6 +20,7 @@ module.exports = {
       nord13: "#EBCB8B",
       nord14: "#A3BE8C",
       nord15: "#B48EAD",
+      nord16: "#FFFFFF",
     },
     minHeight: {
       '0': '0',

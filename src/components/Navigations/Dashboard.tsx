@@ -1,7 +1,7 @@
 import {useState, useCallback, useEffect} from 'react';
 import "tailwindcss/tailwind.css";
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
-import {AiOutlineHome, AiOutlineQrcode, AiOutlineSetting, AiOutlineLogout, AiOutlineUnorderedList, AiOutlineUser} from 'react-icons/ai'
+import {AiOutlineHome, AiOutlineQrcode, AiOutlineSetting, AiOutlineLogout, AiOutlineUnorderedList, AiOutlineUser, AiOutlineForm} from 'react-icons/ai'
 import {HiOutlineChartSquareBar} from 'react-icons/hi'
 import AuthService from "../services/authService";
 import { withRouter, NavLink } from "react-router-dom";
@@ -56,22 +56,28 @@ export default function Dashboard() {
                                     <span className="text-nord5 text-base text-center h-8 leading-10">Home</span>
                                 </li>
                                 </NavLink>
+                                <NavLink to="/form">
+                                <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
+                                    <AiOutlineForm className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Generate Forms</span>
+                                </li>
+                                </NavLink>
                                 <NavLink to="/manageform">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
                                     <HiOutlineChartSquareBar className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
                                     <span className="text-nord5 text-base text-center h-8 leading-10">Manage Forms</span>
                                 </li>
                                 </NavLink>
-                                <NavLink to="/manageqr">
-                                <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
-                                    <AiOutlineUnorderedList className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
-                                    <span className="text-nord5 text-base text-center h-8 leading-10">Manage QR</span>
-                                </li>
-                                </NavLink>
                                 <NavLink to="/qr_code">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
                                     <AiOutlineQrcode className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
                                     <span className="text-nord5 text-base text-center h-8 leading-10">Generate QR</span>
+                                </li>
+                                </NavLink>
+                                <NavLink to="/manageqr">
+                                <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
+                                    <AiOutlineUnorderedList className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
+                                    <span className="text-nord5 text-base text-center h-8 leading-10">Manage QR</span>
                                 </li>
                                 </NavLink>
                                 <NavLink to="/settings">
@@ -103,18 +109,23 @@ export default function Dashboard() {
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
+                                    <NavLink to="/form">
+                                        <AiOutlineForm className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
+                                        </NavLink>
+                                </li>
+                                <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
                                     <NavLink to="/manageform">
                                         <HiOutlineChartSquareBar className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
-                                    <NavLink to="/manageqr">
-                                        <AiOutlineUnorderedList className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
+                                    <NavLink to="/qr_code">
+                                        <AiOutlineQrcode className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
-                                    <NavLink to="/qr_code">
-                                        <AiOutlineQrcode className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
+                                    <NavLink to="/manageqr">
+                                        <AiOutlineUnorderedList className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
