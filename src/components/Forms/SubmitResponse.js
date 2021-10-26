@@ -14,22 +14,22 @@ const mockForm = {
   fields: [
     {
       field_id: "d2955063-c809-4627-b002-0570ef350e16",
-      caption: "What did you like the best about our cafeteria?",
+      caption: "Best CS Class",
       type: "text",
     },
     {
       field_id: "d2955063-c810-4627-b002-0570ef350e16",
-      caption: "Bias in Loona",
+      caption: "UA vs Auburn",
       type: "text",
     },
     {
       field_id: "d2955063-c811-4627-b002-0570ef350e16",
-      caption: "Best KPOP Group?",
+      caption: "Football vs Basketball",
       type: "text",
     },
     {
       field_id: "d2955063-c812-4627-b002-0570ef350e16",
-      caption: "NICE",
+      caption: "Online vs In-person",
       type: "text",
     },
   ],
