@@ -58,7 +58,7 @@ export default function SubmitResponse(props) {
     setQuestions(mockForm.fields);
     setFormTitle(mockForm.title);
     let res = [];
-    Questions.map((q) => {
+    mockForm.fields.map((q) => {
       res.push({
         field_id: q.field_id,
         content: "",
