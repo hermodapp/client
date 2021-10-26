@@ -1,5 +1,5 @@
 import "tailwindcss/tailwind.css";
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useReducer} from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import {Select, Switch, MenuItem, IconButton, AccordionDetails, AccordionSummary, Accordion, Typography} from '@material-ui/core'
 import Dashboard from "../Navigations/Dashboard";
@@ -9,13 +9,19 @@ import {MdSubject, MdShortText, MdCropOriginal} from 'react-icons/md'
 import {BiImageAdd, BiCheckboxChecked} from 'react-icons/bi'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import {useStateValue} from './StateProvider'
-import {actionTypes} from './reducer'
 import { useParams } from "react-router";
 import axios from "axios";
+const API_URL = "https://api.hermodapp.com/";
+
+const formReducer = (state, event) => {
+    return {
+      ...state,
+      [event.target.name]: event.target.value
+    }
+   }
 
 function GenerateForm() {
-
+    const [save, setSave] = useState([]);
     const [questions,setQuestions] =useState([]);
     const [documentName,setDocName] =useState("Untitled Form");  
     const [documentDescription,setDocDesc] =useState(""); 
@@ -25,7 +31,7 @@ function GenerateForm() {
 
     console.log(id)
     useEffect(()=>{
-        var newQuestion = {questionText: "Question",answer:false,questionType:"text", answervalue: "", open: true, required:false}
+        var newQuestion = {questionText: "Question", questionType:"text"}
 
            setQuestions([...questions, newQuestion])
       
@@ -34,11 +40,17 @@ function GenerateForm() {
     function addMoreQuestionField(){
         expandCloseAll();
 
-        setQuestions(questions=> [...questions, {questionText: "Question", questionType:"text", answervalue: "", open: true, required:false}]);
+        setQuestions(questions=> [...questions, {questionText: "Question", questionType:"text"}]);
     }
 
-    function saveForm(){
+    function handleSubmit(){
+        console.log(documentName);
+        console.log(questions);
         
+        /**axios.post(API_URL + 'forms/new/id=' + id ,{
+            "title": documentName,
+            "field": questions,
+        })**/
     }
 
     function addQuestionType(i,type){
@@ -66,12 +78,6 @@ function GenerateForm() {
           qs.splice(i, 1);
         }
         setQuestions(qs)
-      }
-
-      function handleAnswerValue(text,i){
-        var optionsOfQuestion = [...questions];
-        optionsOfQuestion[i].optionText = text;
-        setQuestions(optionsOfQuestion);
       }
 
       function handleQuestionValue(text, i){
@@ -142,7 +148,7 @@ function GenerateForm() {
                         </div>
                         <div>
                             <div className="flex mx-4 mt-2">
-                                <input type={ques.questionType} id="text1" name="textbox1" placeholder="Issues:" value={ques.answervalue} onChange={(e)=>{handleAnswerValue(e.target.value,i)}} className="font-semibold ml-2 w-4/5 border-b outline-none"/>
+                                <input type={ques.questionType} id="text1" name="textbox1" placeholder="Issues:" className="font-semibold ml-2 w-4/5 border-b outline-none"/>
                                 <IconButton>
                                     <span style={{color:"#5f6368",fontSize:"13px"}}>Required </span> <Switch name="checkedA" color="primary" checked={ques.required} onClick={()=>{requiredQuestion(i)}}/>
                                     <MoreVertIcon/>
@@ -186,7 +192,7 @@ function GenerateForm() {
             <section className="flex w-full justify-center">
                 <AiOutlinePlusSquare  onClick={addMoreQuestionField} className="cursor-pointer h-8 w-8 mt-2"/>
             </section>
-            <section className="flex w-full justify-center">
+            <section className="flex w-full justify-center hover:shadow-lg" onClick={handleSubmit}>
                 <button className="border-2 rounded-lg bg-nord10 mx-2 my-6 py-2 px-2 text-nord6 border-nord1 font-bold w-20"> Save</button>
             </section>
         </body>

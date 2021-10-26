@@ -45,7 +45,7 @@ function App() {
           <Route exact path="/success" component={Success} />
           <Route exact path="/home" component={Auth(Home, true)} />
           <Route exact path="/manageform" component={Auth(ManageForm, true)} />
-          <Route exact path="/form" component={Auth(GenerateForm, true)} />
+          <Route exact path="/forms/new" component={Auth(GenerateForm, true)} />
           <Route exact path="/manageqr" component={Auth(ManageQR, true)} />
           <Route exact path="/settings" component={Auth(Setting, true)} />
           <Route

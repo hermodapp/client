@@ -56,7 +56,7 @@ export default function Dashboard() {
                                     <span className="text-nord5 text-base text-center h-8 leading-10">Home</span>
                                 </li>
                                 </NavLink>
-                                <NavLink to="/form">
+                                <NavLink to="/forms/new">
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-l-full">
                                     <AiOutlineForm className="relative block h-8 w-8 leading-11 text-nord5 float-left ml-1"/>
                                     <span className="text-nord5 text-base text-center h-8 leading-10">Generate Forms</span>
@@ -109,7 +109,7 @@ export default function Dashboard() {
                                         </NavLink>
                                 </li>
                                 <li className="block w-full list-none hover:bg-nord2 mb-4 rounded-full">
-                                    <NavLink to="/form">
+                                    <NavLink to="/forms/new">
                                         <AiOutlineForm className="relative block h-8 w-8 leading-11 text-nord5 ml-1"/>
                                         </NavLink>
                                 </li>
