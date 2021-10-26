@@ -1,5 +1,5 @@
 export const initialState = {
-    questions:[{questionText: "Question", questionType:"text", answervalue: "", open: true, required:false}],
+    questions:[{questionText: "Question", questionType:"text"}],
     questionType:"text",
     doc_name:"Untitled Form ",
     doc_desc:""
