@@ -98,7 +98,7 @@ export default class LandingPage extends React.Component {
                   <img
                     alt="team"
                     className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src={Lois}
+                    src=""
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
