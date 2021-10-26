@@ -44,15 +44,15 @@ function GenerateForm(props) {
             field: questions,
         };
 
-        // axios.post(API_URL + 'forms/new?id=${id}', formData).then((form) => {
-        //   if(form.status === 200) {
-        //        alert('Save Successful')
-        //         props.history.push('/manageqr')
-        //   }
-        //   else{
-        //        alert('Save Failed')
-        //   }
-        // });
+        axios.post(API_URL + 'forms/new?id=${id}', formData).then((form) => {
+          if(form.status === 200) {
+               alert('Save Successful')
+                props.history.push('/manageqr')
+          }
+          else{
+               alert('Save Failed')
+          }
+        });
 
         console.log(formData);
     };
