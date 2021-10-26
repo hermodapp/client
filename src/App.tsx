@@ -23,7 +23,8 @@ import Setting from "./components/AdminDashboard/Setting";
 import Auth from "./hoc/auth";
 import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
-
+import SubmitResponse from "./components/Forms/SubmitResponse";
+import ViewResponse from "./components/Forms/ViewResponse";
 /* Auth options
 null   Anyone can go inside
 true   only logged in user can go inside
@@ -57,6 +58,13 @@ function App() {
               return null;
             }}
           />
+
+          <Route
+            exact
+            path="/form/submit"
+            component={Auth(SubmitResponse, null)}
+          />
+          <Route exact path="/form/view" component={Auth(ViewResponse, true)} />
         </Switch>
       </div>
       <Footer />
