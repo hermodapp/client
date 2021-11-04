@@ -29,7 +29,7 @@ function Register(props) {
         setTimeout(() => {
           AuthService.register(values.username, values.password).then(
             () => {
-              props.history.push("/");
+              props.history.push("/login");
               window.location.reload();
             },
             (error) => {
@@ -64,7 +64,7 @@ function Register(props) {
               <Form
                 style={{ minWidth: "375px" }}
                 size={"large"}
-                onSubmit={handleSubmit}
+                onFinish={handleSubmit}
               >
                 <Form.Item required label="Username">
                   <Input
