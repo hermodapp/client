@@ -1,63 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import axiosRetry from "axios-retry";
 import { useLocation } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import Header from "../Navigations/Header";
-const API_URL = "https://api.hermodapp.com/";
+import authHeader from "../services/authHeader";
 
-const mockResponse = {
-  title: "Mock Form Title",
-  questions: {
-    "7eef1849-19ee-47bf-8f9e-52ce1f3d1914": "Best CS Class",
-    "52f9b11d-77d9-442d-ab69-d5d19a01ff19": "UA vs Auburn",
-    "300b4dab-823c-4028-88de-eedfcb8cbd8d": "Football vs Basketball",
-    "3df72a38-ef86-479a-b6e7-ca20b2b71d40": "Online vs In-person",
-  },
-  responses: [
-    {
-      response_id: "cd9237f9-0a86-4e97-a322-eb5e79a26f6b",
-      replies: [
-        {
-          form_input_id: "300b4dab-823c-4028-88de-eedfcb8cbd8d",
-          content: "Football",
-        },
-        {
-          form_input_id: "3df72a38-ef86-479a-b6e7-ca20b2b71d40",
-          content: "In-person",
-        },
-        {
-          form_input_id: "52f9b11d-77d9-442d-ab69-d5d19a01ff19",
-          content: "UA",
-        },
-        {
-          form_input_id: "7eef1849-19ee-47bf-8f9e-52ce1f3d1914",
-          content: "CS 495",
-        },
-      ],
-    },
-    {
-      response_id: "23d04728-2d4e-48fb-b17a-5e5670d9646f",
-      replies: [
-        {
-          form_input_id: "300b4dab-823c-4028-88de-eedfcb8cbd8d",
-          content: "Basketball",
-        },
-        {
-          form_input_id: "3df72a38-ef86-479a-b6e7-ca20b2b71d40",
-          content: "Online",
-        },
-        {
-          form_input_id: "52f9b11d-77d9-442d-ab69-d5d19a01ff19",
-          content: "UA",
-        },
-        {
-          form_input_id: "7eef1849-19ee-47bf-8f9e-52ce1f3d1914",
-          content: "CS 403",
-        },
-      ],
-    },
-  ],
-};
+const API_URL = "https://test.hermodapp.com/";
+axiosRetry(Axios, { retries: 3 });
 
 export default function ViewResponse(props) {
   const { search } = useLocation();
@@ -70,36 +20,33 @@ export default function ViewResponse(props) {
     if (formId === null || formId === "") {
       props.history.push("/");
     }
-    /*
-    Axios.get(API_URL + `form/view?id=${formId}`).then((response) => {
-      console.log(response);
-      setQuestions(response.data.fields);
-      setFormTitle(mockForm.data.title);
-    }); 
-    
-    */
-    setFormTitle(mockResponse.title);
-    let questions = [];
-    let newResponses = mockResponse.responses;
-    Object.keys(mockResponse.questions).map((key) => {
-      let data = {
-        id: key,
-        content: mockResponse.questions[key],
-        responses: {},
-      };
-      questions.push(data);
-    });
-    for (var x = 0; x < questions.length; x++) {
-      for (var i = 0; i < newResponses.length; i++) {
-        var k = newResponses[i].replies.findIndex(
-          (ele) => ele.form_input_id === questions[x].id
-        );
-        questions[x].responses[newResponses[i].response_id] =
-          newResponses[i].replies[k].content;
-      }
-    }
 
-    setQuestions(questions);
+    Axios.get(API_URL + `form/view?id=${formId}`, {
+      headers: authHeader(),
+    }).then((response) => {
+      setFormTitle(response.data.title);
+      let questions = [];
+      let newResponses = response.data.responses;
+      Object.keys(response.data.questions).map((key) => {
+        let data = {
+          id: key,
+          content: response.data.questions[key],
+          responses: {},
+        };
+        questions.push(data);
+      });
+      for (var x = 0; x < questions.length; x++) {
+        for (var i = 0; i < newResponses.length; i++) {
+          var k = newResponses[i].replies.findIndex(
+            (ele) => ele.form_input_id === questions[x].id
+          );
+          questions[x].responses[newResponses[i].response_id] =
+            newResponses[i].replies[k].content;
+        }
+      }
+
+      setQuestions(questions);
+    });
   }, []);
 
   return (
