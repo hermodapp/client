@@ -1,11 +1,9 @@
 import "tailwindcss/tailwind.css";
 import React, { useState, useEffect } from "react";
 import { withRouter, NavLink } from "react-router-dom";
-import axios from "axios";
+
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 import AuthService from "../services/authService";
-import authHeader from "../services/authHeader";
-const API_URL = "https://api.hermodapp.com/";
 
 function Header(props: any) {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -37,10 +35,7 @@ function Header(props: any) {
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           {currentUser && (
             <div>
-              <NavLink
-                to="/home"
-                className="mr-5 text-nord3 hover:bg-nord6"
-              >
+              <NavLink to="/home" className="mr-5 text-nord3 hover:bg-nord6">
                 Dashboard
               </NavLink>
               <NavLink to="/qr_code" className="mr-5 text-nord3 hover:bg-nord6">

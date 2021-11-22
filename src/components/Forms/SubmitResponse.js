@@ -1,39 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import axiosRetry from "axios-retry";
 import { useLocation } from "react-router-dom";
 import { Typography, Button, Form, Input } from "antd";
 import "tailwindcss/tailwind.css";
 import Header from "../Navigations/Header";
 
-const API_URL = "https://api.hermodapp.com/";
+const API_URL = "https://test.hermodapp.com/";
+axiosRetry(Axios, { retries: 5 });
+
 const { Title } = Typography;
 const { TextArea } = Input;
-
-const mockForm = {
-  title: "Mock Form Title",
-  fields: [
-    {
-      field_id: "d2955063-c809-4627-b002-0570ef350e16",
-      caption: "Best CS Class",
-      type: "text",
-    },
-    {
-      field_id: "d2955063-c810-4627-b002-0570ef350e16",
-      caption: "UA vs Auburn",
-      type: "text",
-    },
-    {
-      field_id: "d2955063-c811-4627-b002-0570ef350e16",
-      caption: "Football vs Basketball",
-      type: "text",
-    },
-    {
-      field_id: "d2955063-c812-4627-b002-0570ef350e16",
-      caption: "Online vs In-person",
-      type: "text",
-    },
-  ],
-};
 
 export default function SubmitResponse(props) {
   const { search } = useLocation();
@@ -47,43 +24,36 @@ export default function SubmitResponse(props) {
     if (formId === null || formId === "") {
       props.history.push("/");
     }
-    /*
+
     Axios.get(API_URL + `form/submit?id=${formId}`).then((response) => {
-      console.log(response);
       setQuestions(response.data.fields);
-      setFormTitle(mockForm.data.title);
-    }); 
-    
-    */
-    setQuestions(mockForm.fields);
-    setFormTitle(mockForm.title);
-    let res = [];
-    mockForm.fields.map((q) => {
-      res.push({
-        field_id: q.field_id,
-        content: "",
+      let res = [];
+      response.data.fields.map((q) => {
+        res.push({
+          field_id: q.field_id,
+          content: "",
+        });
       });
+      setResponses(res);
+      setFormTitle(response.data.title);
     });
-    setResponses(res);
-    console.log(Responses);
   }, []);
 
   const submitForm = () => {
     let responseData = {
       responses: Responses,
     };
-    /*
-    Axios.post(API_URL + `form/submit?id=${formId}`, responseData).then((response) => {
-      if (response.status === 200) {
-        alert('Response submitted successfully')
-        props.history.push('/')
+
+    Axios.post(API_URL + `form/submit?id=${formId}`, responseData).then(
+      (response) => {
+        if (response.status === 200) {
+          alert("Response submitted successfully");
+          props.history.push("/");
+        } else {
+          alert("Failed to submit response.");
+        }
       }
-      else {
-        alert('Failed to submit response.')
-      }
-    }); 
-    */
-    console.log(responseData);
+    );
   };
 
   const inputChange = (field_id, content) => {

@@ -2,10 +2,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import Axios from "axios";
+import axiosRetry from "axios-retry";
 import authHeader from "../components/services/authHeader";
 
 import AuthService from "../components/services/authService";
-const API_URL = "https://api.hermodapp.com/";
+const API_URL = "https://test.hermodapp.com/";
+axiosRetry(Axios, { retries: 3 });
 
 export default function (SpecificComponent, option) {
   function AuthenticationCheck(props) {
