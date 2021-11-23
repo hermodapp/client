@@ -65,7 +65,7 @@ function GenerateForm(props) {
       (form) => {
         if (form.status === 200) {
           alert("Save Successful");
-          props.history.push("/manageqr");
+          props.history.push("/manageform");
         } else {
           alert("Save Failed");
         }

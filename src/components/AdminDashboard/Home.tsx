@@ -19,8 +19,8 @@ export default function Home() {
                     <div className="flex justify-center justify-items-center bg-gradient-to-r from-nord8 via-nord9 to-nord10 rounded-t-2xl">
                         <h1 className="lg:text-2xl md:text-2xl sm:text-base pb-2 text-nord16 font-semibold mt-4">Overview</h1>
                         </div>
-                        <div className="flex border justify-center">
-                            something
+                        <div className="flex justify-center">
+
                         </div>
                     </div> 
                 </div>

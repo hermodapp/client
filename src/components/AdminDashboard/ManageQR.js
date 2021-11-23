@@ -36,9 +36,11 @@ export default function ManageQR() {
   return (
     <>
       <Dashboard />
-      <div className="w-1/2 my-12 mx-auto">
-        <Row gutter={[16, 16]}>{renderCards}</Row>
-      </div>
+      <body className="pl-24 h-screen">
+        <div className="w-4/5 my-12 mx-auto">
+          <Row gutter={[16, 16]}>{renderCards}</Row>
+        </div>
+      </body>
     </>
   );
 }
