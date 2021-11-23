@@ -1,26 +1,34 @@
 import "tailwindcss/tailwind.css";
 import QRCode from "react-qr-code";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import Axios from "axios";
+import axiosRetry from "axios-retry";
 import authHeader from "../../components/services/authHeader";
 import Dashboard from "../Navigations/Dashboard";
 
+axiosRetry(Axios, { retries: 5 });
+
 export default function QrCodeGenerator() {
   const [slug, setSlug] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Payload, setPayload] = useState("");
+  const [FormId, setFormId] = useState("");
   const [qrCodes, setQrCodes] = useState([]);
   const [responseMessage, setResponseMessage] = useState("");
-  let base_url = "https://api.hermodapp.com/";
+  let base_url = "https://test.hermodapp.com/";
 
   const saveQrCode = () => {
-    axios
-      .get(base_url + "qr_code/store", {
-        withCredentials: true,
-        headers: authHeader(),
-        params: {
-          slug: slug,
-          generation_data: "",
-        },
-      })
+    let qrData = {
+      phone_number: PhoneNumber,
+      email: Email,
+      payload: Payload,
+      form_id: FormId,
+    };
+
+    Axios.post(base_url + "qr_code/generate", qrData, {
+      headers: authHeader(),
+    })
       .then((response) => {
         alert("QR Code saved to server!");
         setResponseMessage("QR saved to server successfully!");
@@ -35,11 +43,10 @@ export default function QrCodeGenerator() {
   };
 
   const updateQrCodeList = () => {
-    axios
-      .get(base_url + "qr_codes", {
-        withCredentials: true,
-        headers: authHeader(),
-      })
+    Axios.get(base_url + "qr_codes", {
+      withCredentials: true,
+      headers: authHeader(),
+    })
       .then((response) => {
         setQrCodes(response.data.qr_codes);
       })
@@ -61,31 +68,74 @@ export default function QrCodeGenerator() {
       <body className="pt-4">
         <div className="container pl-72">
           <section className="text-gray-600 body-font">
-            <form className="bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4">
+            <form className="flex justify-center bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4">
               <div className="mb-4">
-                <div className="flex justify-center">
+                <div className="flex justify-center flex-col content-center text-center">
+                  <label
+                    className="flex text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="slug"
+                  >
+                    Slug
+                  </label>
                   <input
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
-                    className="shadow appearance-none border rounded w-5/6 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="mb-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="slug"
                     type="text"
                     placeholder="Slug"
                   />
+                  <label
+                    className="flex text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="slug"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    value={PhoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="mb-2 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="phoneNumber"
+                    type="text"
+                    placeholder="Phone Number"
+                  />
+                  <label
+                    className="flex text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="slug"
+                  >
+                    Email
+                  </label>
+                  <input
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mb-2 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="email"
+                    type="text"
+                    placeholder="Email"
+                  />
+                  <label
+                    className="flex text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="slug"
+                  >
+                    FormId
+                  </label>
+                  <input
+                    value={FormId}
+                    onChange={(e) => setFormId(e.target.value)}
+                    className="mb-2 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="formId"
+                    type="text"
+                    placeholder="Form Id"
+                  />
                   <button
                     onClick={saveQrCode}
-                    className="ml-4 bg-nord1 hover:bg-nord4 text-nord4 hover:text-nord1 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-nord1 hover:bg-nord4 text-nord4 hover:text-nord1 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="button"
                   >
                     Save
                   </button>
                 </div>
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="slug"
-                >
-                  slug
-                </label>
+
                 {responseMessage && (
                   <label
                     className="block text-nord11 text-sm font-bold mb-2"
