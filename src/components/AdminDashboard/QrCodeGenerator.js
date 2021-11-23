@@ -6,16 +6,26 @@ import axiosRetry from "axios-retry";
 import authHeader from "../services/authHeader";
 import Dashboard from "../Navigations/Dashboard";
 
+const API_URL = "https://test.hermodapp.com/";
 axiosRetry(Axios, { retries: 5 });
 
 export default function QrCodeGenerator(props) {
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [Email, setEmail] = useState("");
   const [Payload, setPayload] = useState("");
-  const [FormId, setFormId] = useState("");
+  const [formList, setForm] = useState([]);
+  const [formId, setFormId] = useState("");
   const [Uuid, setUuid] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
   let base_url = "https://test.hermodapp.com/";
+
+  useEffect(() => {
+    Axios.get(API_URL + `form/view`, {
+      headers: authHeader(),
+    }).then((response) => {
+      setForm(response.data.forms);
+    });
+  }, []);
 
   const saveQrCode = () => {
     let qrData = {
@@ -23,6 +33,10 @@ export default function QrCodeGenerator(props) {
       email: Email,
       payload: Payload,
     };
+
+    if (formId !== null && formId !== "") {
+      qrData["form_id"] = formId;
+    }
 
     Axios.post(base_url + "qr_code/generate", qrData, {
       headers: authHeader(),
@@ -47,6 +61,10 @@ export default function QrCodeGenerator(props) {
       window.print();
       props.history.push("/manageqr");
       window.location.reload();
+  };
+
+  const formChange = (event) => {
+    setFormId(event.currentTarget.value)
   };
 
   return (
@@ -110,6 +128,21 @@ export default function QrCodeGenerator(props) {
                       type="text"
                       placeholder="Email"
                     />
+                    <label
+                      className="flex text-gray-700 text-sm font-bold mb-2 pr-4 pl-4"
+                      htmlFor="slug"
+                    >
+                      Link Form
+                    </label>
+                    <div className="mb-2 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+                      <select className="focus:outline-none" onChange={formChange} value={formId} type="dropdown">
+                      <option title={""} value={null}>{} </option>
+
+                      {formList.map(item => (
+                          <option title={item.title} value={item.form_id}>{item.title} </option>
+                      ))}
+                      </select>
+                    </div>
                 </div>
               </div>
             </form>
