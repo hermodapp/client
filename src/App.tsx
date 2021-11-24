@@ -53,7 +53,7 @@ function App() {
             path="/project"
             component={() => {
               window.location.replace(
-                "https://project-website-ten.vercel.app/"
+                "https://project-website-pied.vercel.app"
               );
               return null;
             }}
