@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import "../../index.css";
 import { ReactComponent as HermodLogo } from "../../svgs/hermod.svg";
 import russ from "../../images/russ.png";
-import Lois from "../../images/LoisGriffin.png";
+import An from "../../images/An.jpg";
 import Header from "../Navigations/Header";
 import Simon from "../../images/simon1.png";
 import Jonathan from "../../images/jonathan.jpg";
@@ -12,7 +12,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <>
-      <Header/>
+        <Header />
         <section className="text-gray-700 body-font bg-nord6">
           <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
             <div className="flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -98,7 +98,7 @@ export default class LandingPage extends React.Component {
                   <img
                     alt="team"
                     className="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                    src=""
+                    src={An}
                   />
                   <div className="flex-grow">
                     <h2 className="text-gray-900 title-font font-medium">
